@@ -1,0 +1,182 @@
+.line {
+  position: relative;
+  display: grid;
+  max-height: min(440px, 56svh);
+  padding: var(--space-2) 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.row {
+  --lane: var(--lane-0);
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 4px var(--space-3) 4px calc(var(--space-2) + var(--depth, 0) * 14px);
+  transition: background-color var(--fast) ease;
+}
+
+.rail {
+  position: relative;
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+}
+
+.rail::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+  width: 4px;
+  margin-left: -2px;
+  background: var(--lane);
+}
+
+.row[data-row="start"] .rail::before {
+  top: 50%;
+}
+
+.row[data-row="end"] .rail::before {
+  bottom: 50%;
+}
+
+.dot {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--station);
+  border: 3px solid var(--lane);
+}
+
+.row[data-container] .dot {
+  width: 10px;
+  height: 10px;
+  border-width: 2px;
+  background: var(--lane);
+}
+
+.row[data-terminal] .dot {
+  width: 16px;
+  height: 16px;
+  background: var(--bg);
+  border-width: 4px;
+}
+
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--space-2);
+  min-width: 0;
+}
+
+.chip {
+  flex: none;
+  max-width: 100%;
+  padding: 2px 8px;
+  overflow: hidden;
+  border-radius: 7px;
+  border: 2px solid var(--lane);
+  background: var(--station);
+  color: var(--station-text);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: pre;
+}
+
+.chip[data-kind="class"],
+.chip[data-kind="set"],
+.chip[data-kind="dot"] {
+  background: var(--lane);
+  color: var(--on-accent);
+}
+
+.chip[data-kind="anchor"] {
+  border-style: dashed;
+  background: transparent;
+  color: var(--lane);
+}
+
+.text {
+  min-width: 0;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+.row[data-container] .text {
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.terminal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.train {
+  color: var(--accent);
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.visited {
+  color: var(--ok);
+}
+
+.row[data-tone="ok"],
+.row[data-tone="match"] {
+  background: color-mix(in srgb, var(--ok) 14%, transparent);
+}
+
+.row[data-tone="fail"] {
+  background: color-mix(in srgb, var(--fail) 14%, transparent);
+}
+
+.row[data-tone="back"] {
+  background: color-mix(in srgb, var(--warn) 16%, transparent);
+}
+
+.row[data-tone="idle"] {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.row[data-tone="ok"] .train,
+.row[data-tone="match"] .train {
+  color: var(--ok);
+}
+
+.row[data-tone="fail"] .train {
+  color: var(--fail);
+  animation: shake 0.3s ease-in-out;
+}
+
+.row[data-tone="back"] .train {
+  color: var(--warn);
+}
+
+.row[data-focus] {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}

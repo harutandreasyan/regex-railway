@@ -1,0 +1,81 @@
+.x {
+  transition: transform var(--train-speed, 260ms) linear;
+  pointer-events: none;
+}
+
+.y {
+  transition: transform var(--train-speed, 260ms) var(--ease);
+}
+
+.hop {
+  --tone: var(--accent);
+  animation: hop var(--train-speed, 260ms) ease-out;
+}
+
+.hop[data-tone="ok"],
+.hop[data-tone="match"] {
+  --tone: var(--ok);
+}
+
+.hop[data-tone="fail"] {
+  --tone: var(--fail);
+}
+
+.hop[data-tone="back"] {
+  --tone: var(--warn);
+}
+
+.bob {
+  animation: bob 0.5s ease-in-out infinite alternate;
+}
+
+.body {
+  fill: var(--tone);
+  stroke: color-mix(in srgb, var(--tone) 60%, black);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--tone) 60%, transparent));
+  transition: fill var(--fast) ease;
+}
+
+.window {
+  fill: color-mix(in srgb, white 85%, var(--tone));
+}
+
+.wheel {
+  fill: var(--bg);
+  stroke: var(--tone);
+  stroke-width: 1.5;
+}
+
+.lamp {
+  fill: #fff6c9;
+}
+
+.shadow {
+  fill: rgb(0 0 0 / 0.25);
+}
+
+.hop[data-tone="fail"] .bob {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes hop {
+  40% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes bob {
+  to {
+    transform: translateY(-1.5px);
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}

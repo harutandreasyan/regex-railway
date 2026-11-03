@@ -1,0 +1,183 @@
+.legend {
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  border-right: 2px solid var(--subtle);
+  border-bottom: 2px solid var(--subtle);
+  transform: rotate(45deg);
+  transition: transform var(--mid) var(--ease);
+}
+
+.legend[open] .summary::after {
+  transform: rotate(-135deg);
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--space-3) var(--space-5);
+  padding: 0 var(--space-4) var(--space-3);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 13px;
+}
+
+.item strong {
+  display: block;
+  font-size: 13px;
+}
+
+.icon {
+  flex: none;
+  width: 64px;
+  height: 28px;
+}
+
+.icon svg {
+  width: 64px;
+  height: 28px;
+  overflow: visible;
+}
+
+.text {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.track {
+  fill: none;
+  stroke: var(--lane-0);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.thin {
+  fill: none;
+  stroke: var(--lane-0);
+  stroke-width: 2.5;
+  opacity: 0.8;
+}
+
+.station {
+  fill: var(--station);
+  stroke: var(--lane-0);
+  stroke-width: 2.5;
+}
+
+.filled {
+  fill: var(--lane-2);
+  stroke: color-mix(in srgb, var(--lane-2) 70%, black);
+  stroke-width: 2;
+}
+
+.anchor {
+  fill: var(--bg);
+  stroke: var(--lane-3);
+  stroke-width: 2.5;
+  stroke-dasharray: 4 3;
+}
+
+.frame {
+  fill: color-mix(in srgb, var(--lane-1) 10%, transparent);
+  stroke: var(--lane-1);
+  stroke-width: 1.5;
+}
+
+.icon text {
+  fill: var(--station-text);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.icon .filledText {
+  fill: var(--on-accent);
+  font-size: 10px;
+}
+
+.icon .anchorText {
+  fill: var(--lane-3);
+  font-size: 10px;
+}
+
+.icon .frameText {
+  fill: var(--lane-1);
+  font-size: 8px;
+}
+
+.tones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toneLead {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.tone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tone strong {
+  color: var(--text);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.tone[data-tone="ok"] .swatch {
+  background: var(--ok);
+}
+
+.tone[data-tone="fail"] .swatch {
+  background: var(--fail);
+}
+
+.tone[data-tone="back"] .swatch {
+  background: var(--warn);
+}

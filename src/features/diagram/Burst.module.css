@@ -1,0 +1,38 @@
+.burst {
+  pointer-events: none;
+}
+
+.ring {
+  fill: none;
+  stroke: var(--ok);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ring 700ms var(--ease) forwards;
+}
+
+.particle {
+  animation: fly 750ms var(--ease) forwards;
+}
+
+@keyframes ring {
+  from {
+    opacity: 1;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+@keyframes fly {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy));
+  }
+}

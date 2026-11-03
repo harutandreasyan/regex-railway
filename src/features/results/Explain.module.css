@@ -1,0 +1,33 @@
+.tree {
+  display: grid;
+  gap: 2px;
+}
+
+.children {
+  display: grid;
+  gap: 2px;
+  margin-left: 11px;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--line-strong);
+}
+
+.line {
+  display: block;
+  width: 100%;
+  padding: 5px var(--space-2);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  text-align: left;
+  transition: background-color var(--fast) ease;
+}
+
+.line:hover,
+.line[data-focus] {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 14px;
+}

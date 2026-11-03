@@ -1,0 +1,8 @@
+# Regex Railway
+
+> Turns a regular expression into a metro map and replays how a backtracking engine matches it against your text, step by step, with plain-English explanations and catastrophic-backtracking (ReDoS) detection.
+
+- Built with React, TypeScript and Zustand: a hand-written regex parser, backtracking matcher and diagram layout engine.
+- Every run is checked against the browser's own RegExp.
+- No backend: patterns and text are shared through the URL fragment.
+- Author: Harut Andreasyan, https://harut-andreasyan.vercel.app

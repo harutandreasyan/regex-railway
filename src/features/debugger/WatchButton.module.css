@@ -1,0 +1,24 @@
+.watch {
+  height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  font-size: 14.5px;
+}
+
+.watch:not([data-playing]):not(:disabled) {
+  animation: invite 2.4s ease-in-out infinite;
+}
+
+@keyframes invite {
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--accent) 60%, white 10%) inset,
+      0 0 0 8px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+}
+
+@media (max-width: 560px) {
+  .watch {
+    width: 100%;
+  }
+}

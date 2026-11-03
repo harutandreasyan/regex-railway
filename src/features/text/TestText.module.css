@@ -1,0 +1,104 @@
+.wrap {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.count {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-2);
+  color: var(--subtle);
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.field {
+  position: relative;
+  display: grid;
+  min-height: 120px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  transition: border-color var(--fast) ease;
+}
+
+.field:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.backdrop,
+.input {
+  margin: 0;
+  padding: var(--space-4);
+  border: 0;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: transparent;
+  pointer-events: none;
+}
+
+.input {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  background: transparent;
+  color: var(--text);
+  caret-color: var(--accent);
+  outline: none;
+}
+
+.segment {
+  border-radius: 4px;
+}
+
+.segment[data-match="a"] {
+  background: var(--match-a);
+  box-shadow: 0 2px 0 var(--lane-0);
+}
+
+.segment[data-match="b"] {
+  background: var(--match-b);
+  box-shadow: 0 2px 0 var(--lane-2);
+}
+
+.segment[data-cursor="ok"] {
+  background: color-mix(in srgb, var(--ok) 30%, transparent);
+  box-shadow: 0 2px 0 var(--ok);
+}
+
+.segment[data-cursor="fail"] {
+  background: color-mix(in srgb, var(--fail) 30%, transparent);
+  box-shadow: 0 2px 0 var(--fail);
+}
+
+.segment[data-cursor="probe"] {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 2px 0 var(--accent);
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  vertical-align: text-bottom;
+  background: var(--accent);
+}
+
+.caret[data-cursor="fail"] {
+  background: var(--fail);
+}

@@ -1,0 +1,142 @@
+.debugger {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.play {
+  width: 44px;
+  height: 44px;
+  margin: 0 var(--space-1);
+  border-radius: 50%;
+}
+
+.timeline {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.range {
+  --track: 4px;
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.range::-webkit-slider-runnable-track {
+  height: var(--track);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    90deg,
+    var(--accent) calc(var(--progress) * 100%),
+    var(--surface-3) calc(var(--progress) * 100%)
+  );
+}
+
+.range::-moz-range-track {
+  height: var(--track);
+  border-radius: var(--radius-pill);
+  background: var(--surface-3);
+}
+
+.range::-moz-range-progress {
+  height: var(--track);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+.range::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  margin-top: calc((var(--track) - 14px) / 2);
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  appearance: none;
+}
+
+.range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+
+.narration {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  min-height: 1.5em;
+  font-size: 14px;
+}
+
+.narration[data-tone="ok"],
+.narration[data-tone="match"] {
+  color: var(--ok);
+}
+
+.narration[data-tone="fail"] {
+  color: var(--fail);
+}
+
+.narration[data-tone="back"] {
+  color: var(--warn);
+}
+
+.counter {
+  flex: none;
+  color: var(--subtle);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.speed {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.speedOption {
+  height: 28px;
+  padding: 0 var(--space-2);
+  border-radius: 6px;
+  color: var(--subtle);
+  font-size: 12.5px;
+  font-weight: 550;
+}
+
+.speedOption[aria-checked="true"] {
+  background: var(--surface-3);
+  color: var(--text);
+}
+
+@media (max-width: 760px) {
+  .debugger {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-3);
+  }
+
+  .timeline {
+    justify-self: stretch;
+  }
+}

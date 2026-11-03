@@ -1,0 +1,52 @@
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.status strong {
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ok);
+}
+
+.alarm {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--fail) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--fail) 40%, transparent);
+  font-size: 14px;
+  line-height: 1.55;
+  animation: pulse 1.6s ease-in-out 2;
+}
+
+.alarm svg {
+  flex: none;
+  color: var(--fail);
+  margin-top: 2px;
+}
+
+.alarm code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--surface-3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--fail) 15%, transparent);
+  }
+}
